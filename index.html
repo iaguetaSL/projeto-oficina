@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oficina Fácil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <h1>Oficina Fácil</h1>
+    <p class="subtitle">Cadastro por placa + orçamento</p>
+  </header>
+
+  <main class="container">
+
+    <!-- HOME -->
+    <section id="home" class="card">
+      <h2>Começar</h2>
+      <div class="row">
+        <button class="btn primary" id="irNovo" type="button">Cliente novo</button>
+        <button class="btn" id="irBuscar" type="button">Buscar por placa</button>
+      </div>
+    </section>
+
+    <!-- NOVO CLIENTE -->
+    <section id="novo" class="card hidden">
+      <div class="row space">
+        <h2>Cliente novo</h2>
+        <button class="btn ghost" id="voltarHome1" type="button">← Voltar</button>
+      </div>
+
+      <form id="formNovo" class="form">
+        <div class="grid">
+          <label>
+            Nome do cliente
+            <input id="nome" type="text" required />
+          </label>
+
+          <label>
+            Telefone
+            <input id="telefone" type="tel" required />
+          </label>
+
+          <label>
+            Modelo do carro
+            <input id="modelo" type="text" required />
+          </label>
+
+          <label>
+            Placa do carro
+            <input id="placa" type="text" required maxlength="8" placeholder="ABC1D23" />
+            <small class="hint">Aceita com/sem traço. A gente normaliza.</small>
+          </label>
+
+          <label>
+            KM do veículo
+            <input id="km" type="number" min="0" placeholder="Ex: 125000" />
+          </label>
+
+          <label>
+            Data do orçamento
+            <input id="dataOrcamento" type="date" />
+          </label>
+        </div>
+
+        <label>
+          Relato do cliente
+          <textarea id="relato" rows="4" placeholder="Ex: barulho na suspensão..."></textarea>
+        </label>
+
+        <h3>Peças</h3>
+
+        <div id="listaPecas" class="pecas"></div>
+
+        <button id="addPeca" type="button" class="btn">+ Adicionar peça</button>
+
+        <h3>Mão de obra</h3>
+        <div class="grid">
+          <label>
+            Mão de obra (R$)
+            <input id="maoDeObra" type="text" value="0" />
+          </label>
+
+          <label>
+            Total do serviço (R$)
+            <input id="total" type="text" value="0,00" disabled />
+          </label>
+        </div>
+
+        <div class="row space">
+          <button id="limpar" type="button" class="btn ghost">Limpar</button>
+          <button type="submit" class="btn primary">Salvar</button>
+        </div>
+
+        <p id="msgNovo" class="msg"></p>
+      </form>
+    </section>
+
+    <!-- BUSCAR -->
+    <section id="buscar" class="card hidden">
+      <div class="row space">
+        <h2>Buscar por placa</h2>
+        <button class="btn ghost" id="voltarHome2" type="button">← Voltar</button>
+      </div>
+
+      <div class="row">
+        <input id="placaBusca" type="text" maxlength="8" placeholder="Digite a placa" />
+        <button class="btn primary" id="btnBuscarAgora" type="button">Buscar</button>
+      </div>
+
+      <p id="msgBusca" class="msg"></p>
+
+      <div id="acoesNaoAchou" class="row hidden">
+        <button class="btn" id="btnIrNovoDireto" type="button">Cadastrar novo cliente</button>
+      </div>
+
+      <section id="resultado" class="result hidden">
+        <h3>Cadastro encontrado ✅</h3>
+
+        <div class="resultBox">
+          <p><strong>Nome:</strong> <span id="rNome"></span></p>
+          <p><strong>Telefone:</strong> <span id="rTelefone"></span></p>
+          <p><strong>Modelo:</strong> <span id="rModelo"></span></p>
+          <p><strong>Placa:</strong> <span id="rPlaca"></span></p>
+          <p><strong>KM:</strong> <span id="rKm"></span></p>
+          <p><strong>Data do orçamento:</strong> <span id="rData"></span></p>
+          <p><strong>Relato:</strong> <span id="rRelato"></span></p>
+
+          <hr />
+
+          <h4>Peças</h4>
+          <ul id="rListaPecas" class="lista"></ul>
+
+          <p><strong>Mão de obra:</strong> R$ <span id="rMao"></span></p>
+          <p class="total"><strong>Total:</strong> R$ <span id="rTotal"></span></p>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <small>Oficina Fácil • Cadastro e orçamentos</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
